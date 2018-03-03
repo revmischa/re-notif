@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
-import { CSSTransition } from 'react-transition-group';
 import Notif from './Notif';
 import PropTypes from 'prop-types';
 
@@ -14,8 +12,6 @@ const Notifs = (props) => {
     className,
     componentClassName,
     CustomComponent,
-    transitionEnterTimeout,
-    transitionLeaveTimeout,
   } = props;
 
   const renderedNotifications = notifications.map((notification) => {
@@ -49,14 +45,7 @@ const Notifs = (props) => {
 
   return (
     <div className={classes} >
-      <TransitionGroup>
-        <CSSTransition
-          classNames={`${componentClassName}-transition`}
-          timeout={{ enter: transitionEnterTimeout, exit: transitionLeaveTimeout }}
-        >
-        {renderedNotifications}
-        </CSSTransition>
-      </TransitionGroup>
+      {renderedNotifications}
     </div>
   );
 };
